@@ -16,14 +16,30 @@
 <!-- Set class to official for more formal font; unofficial for informal font -->
 <body class="official bgColor3">
 
-	<div>
-		<!-- The surface is the main playing field for the game -->
-		<svg  id="surface" style="width:100% height:100%" xmlns="http://www.w3.org/2000/svg" version="1.1" onclick="toggleSimStep();"></svg>
+	<div style="width:100% height:100%">
+		<!-- Main Surface for Simulation Playing Field. -->
+		<svg  id="surface" class="left" onclick="toggleSimStep();"></svg>
+		<svg  id="surface2" class="right" onclick="toggleSimStep();"></svg>
 	</div>
 
-	<div>
-		<div id="controls" style="position:absolute;top:0;left:90%">Animation Speed:
-			<input id="slider1" type="range" min="0" max="1000" step="10" onchange="redrawWindow();" />
+	<!-- Control Bar Placements -->
+	<div style="margin-top: 0.1em;padding: 1em 2em 1em 2em;border-width: 5px; border-color: #006400; border-style:solid;">
+		<div style=" text-align:right">
+			<div id="controls">Animation Speed:
+				<input id="slider1" type="range" min="0" max="1000" step="10" value = "200" onchange="redrawWindow();" />
+			</div>
+			<div id="controls2">Probability of Order Arrival:
+				<input id="slider2" type="range" min="0" max="1" step="0.1" value = "0.8" onchange="redrawWindow();" />
+			</div>
+			<div id="controls3">Probability of Delivery Driver Arrival:
+				<input id="slider3" type="range" min="0" max="1" step="0.1" value = "0.2" onchange="redrawWindow();" />
+			</div>
+			<div id="controls4">Number of Deliveries Fulfiled Per Rider:
+				<input id="slider4" type="range" min="0" max="15" step="1" value = "5" onchange="redrawWindow();" />
+			</div>
+			<div id="controls5">Number of Shops in the Simulation Space:
+				<input id="slider5" type="range" min="1" max="50" step="1" value = "30" onchange="redrawWindow();" />
+			</div>
 		</div>
 	</div>
 
