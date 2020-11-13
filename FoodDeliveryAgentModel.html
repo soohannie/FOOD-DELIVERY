@@ -9,6 +9,9 @@
 	<!-- d3 is for data visualization -->
 	<script type="text/javascript" src="lib/d3.min.js"></script>
 
+	<!--Plotly for drawing graphs-->
+	<script type="text/javascript" src="lib/plotly.min.js"></script>
+
 	<!-- custom styles for this application -->
 	<link rel="stylesheet" href="styles/basicagentmodel.css" media="screen">
 
@@ -36,8 +39,27 @@
 
 	<div style="width:100% height:100%">
 		<!-- Main Surface for Simulation Playing Field. -->
-		<svg  id="surface" class="left" onclick="toggleSimStep();"></svg>
-		<svg  id="surface2" class="right" onclick="toggleSimStep();"></svg>
+		<div class="row">
+			<div class="column">
+				<svg  id="surface" class="left" onclick="toggleSimStep();"></svg>
+			</div>
+			<div class="column">
+				<div>
+					<svg  id="surface2" class="right"></svg>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div style="margin-top: 0.1em;padding: 1em 2em 1em 2em;border-width: 5px; border-color: #006400; border-style:solid;">
+		<div style=" text-align:center">
+			Analytics Visualizations
+		</div>
+		<div class="row">
+			<div id="chart1" class="column"></div>
+			<div id="chart2" class="column"></div>
+			<div id="chart3" class="column"></div>
+		</div>
 	</div>
 
 	<!-- Control Bar Placements -->
@@ -51,29 +73,32 @@
 				Number of Shops in the Simulation Space:
 				<input id="slider5" type="range" min="1" max="50" step="1" value = "30" onchange=";" />
 			</div>
+			<div id="controls4" style=" text-align:center">Number of Deliveries Fulfiled Per Rider:
+				<input id="slider4" type="range" min="0" max="15" step="1" value = "5" onchange=";" />
+			</div>
 		</br>
 			<div style=" text-align:center">
 				Reset Simulation
-				<button id="controls6" onclick="reload()"> Reset </button>
+				<button id="controls6" onclick="reload(); reloadGraph()"> Reset </button>
 			</div>
 		</div>
-		<div class="column" style=" text-align:right">
+		<div class="column" style=" text-align:center">
+			<div style=" text-align:center">
+				<u>Variables that can be changed during simulation run</u>
+			</div>
+		</br>
 			<div id="pricingtrigger">Implement Dynamic Pricing:
 				<input id="pricingtrigger1" type="checkbox" onclick="redrawWindow();" />
 			</div>
-			<div id="controls">Animation Speed:
+			<div id="controls" style=" text-align:center">Animation Speed:
 				<input id="slider1" type="range" min="0" max="1000" step="10" value = "200" onchange="redrawWindow();" />
 			</div>
-			<div id="controls2">Probability of Order Arrival:
+			<div id="controls2" style=" text-align:center">Probability of Order Arrival:
 				<input id="slider2" type="range" min="0" max="1" step="0.01" value = "0.75" />
 			</div>
-			<div id="controls3">Probability of Delivery Driver Arrival:
+			<div id="controls3" style=" text-align:center">Probability of Delivery Driver Arrival:
 				<input id="slider3" type="range" min="0" max="1" step="0.01" value = "0.15" />
 			</div>
-			<div id="controls4">Number of Deliveries Fulfiled Per Rider:
-				<input id="slider4" type="range" min="0" max="15" step="1" value = "5" onchange="redrawWindow();" />
-			</div>
-
 
 		</div>
 	</div>
@@ -99,6 +124,7 @@
 	</div>
 	<!-- Anything below this line should be a popup window or dialog or a late-loading library -->
 	<script type="text/javascript" src="lib/BasicAgentModel.js"></script>
+	<script type="text/javascript" src="lib/PlotGraph.js"></script>
 
 </body>
 </html>

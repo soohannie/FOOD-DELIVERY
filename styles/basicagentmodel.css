@@ -59,3 +59,7 @@
   .column {
 	flex: 50%;
   }
+
+  .column4div {
+	flex: 25%;
+  }
