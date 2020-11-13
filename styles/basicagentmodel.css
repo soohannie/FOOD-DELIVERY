@@ -51,3 +51,11 @@
 .splitscreen .right {
     flex: 1;
 }
+
+.row {
+	display: flex;
+  }
+
+  .column {
+	flex: 50%;
+  }
